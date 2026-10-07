@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="meta.title">Natalia &amp; Mateusz · Ślub</title>
+  <meta name="description" data-i18n-attr="content:meta.description" content="Zapraszamy na nasz ślub.">
+  <meta name="theme-color" content="#F5F0E6">
+  <meta property="og:title" content="Natalia & Mateusz">
+  <meta property="og:description" content="Zapraszamy na nasz ślub.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Olive branch, drawn once and reused as decoration -->
+    <symbol id="branch" viewBox="0 0 200 120">
+      <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+        <path d="M4 100 C 50 90, 110 60, 196 14"/>
+        <path d="M40 86 c -6 -16 2 -30 14 -36 c 6 14 2 28 -14 36z" fill="currentColor" fill-opacity=".10"/>
+        <path d="M70 72 c -8 -14 -4 -30 8 -38 c 8 12 6 28 -8 38z" fill="currentColor" fill-opacity=".10"/>
+        <path d="M100 56 c -8 -14 -4 -30 10 -38 c 8 12 4 28 -10 38z" fill="currentColor" fill-opacity=".10"/>
+        <path d="M130 40 c -8 -14 -2 -28 12 -34 c 6 12 2 26 -12 34z" fill="currentColor" fill-opacity=".10"/>
+        <path d="M60 84 c 6 10 20 14 32 8 c -8 -10 -22 -14 -32 -8z" fill="currentColor" fill-opacity=".10"/>
+        <path d="M92 70 c 6 10 20 14 32 8 c -8 -10 -22 -14 -32 -8z" fill="currentColor" fill-opacity=".10"/>
+        <path d="M124 54 c 6 10 20 14 30 6 c -8 -10 -20 -12 -30 -6z" fill="currentColor" fill-opacity=".10"/>
+        <path d="M156 36 c 6 8 18 10 26 4 c -8 -8 -18 -10 -26 -4z" fill="currentColor" fill-opacity=".10"/>
+        <circle cx="26" cy="92" r="3.5" fill="currentColor" fill-opacity=".25"/>
+        <circle cx="34" cy="98" r="2.5" fill="currentColor" fill-opacity=".25"/>
+      </g>
+    </symbol>
+    <symbol id="icon-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="icon-plus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="icon-bus" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="4" y="4" width="16" height="14" rx="3"/><path d="M4 11h16M8 21v-3M16 21v-3"/><circle cx="8.5" cy="15" r=".8" fill="currentColor"/><circle cx="15.5" cy="15" r=".8" fill="currentColor"/></g></symbol>
+    <symbol id="icon-car" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14l1.6-5A2 2 0 0 1 7.5 7.5h9a2 2 0 0 1 1.9 1.5L20 14v4H4z"/><path d="M4 14h16M7 18v1.5M17 18v1.5"/><circle cx="8" cy="15.8" r=".8" fill="currentColor"/><circle cx="16" cy="15.8" r=".8" fill="currentColor"/></g></symbol>
+    <symbol id="icon-plane" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M10 21l2-7 7-5a1.6 1.6 0 0 0-1.5-2.6L10 9 5 5 3 6l4 5-3 3 1 1 4-1 2 7z"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#rsvp" data-i18n="nav.rsvp">Potwierdź obecność</a>
+
+<header class="nav" id="nav">
+  <a class="nav__mono" href="#top" aria-label="Start">N<span>&amp;</span>M</a>
+  <nav class="nav__links" id="nav-links" aria-label="Sekcje">
+    <a href="#story" data-i18n="nav.story">Historia</a>
+    <a href="#day" data-i18n="nav.day">Plan dnia</a>
+    <a href="#venue" data-i18n="nav.venue">Miejsce</a>
+    <a href="#stay" data-i18n="nav.stay">Noclegi</a>
+    <a href="#travel" data-i18n="nav.travel">Dojazd</a>
+    <a href="#info" data-i18n="nav.info">Informacje</a>
+    <a href="#rsvp" class="nav__cta" data-i18n="nav.rsvp">Potwierdź obecność</a>
+  </nav>
+  <div class="nav__right">
+    <button class="lang" id="lang-toggle" type="button" data-i18n-attr="aria-label:lang.switch" aria-label="Switch to English"><span data-i18n="lang.label">EN</span></button>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav-links" data-i18n-attr="aria-label:nav.menu" aria-label="Menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <svg class="hero__branch hero__branch--l" aria-hidden="true"><use href="#branch"/></svg>
+    <svg class="hero__branch hero__branch--r" aria-hidden="true"><use href="#branch"/></svg>
+    <div class="hero__inner">
+      <p class="eyebrow eyebrow--center" data-i18n="hero.eyebrow">Bierzemy ślub</p>
+      <h1 class="hero__names">
+        <span class="hero__name" data-site="couple.first">Natalia</span>
+        <span class="hero__amp" data-i18n="hero.and">&amp;</span>
+        <span class="hero__name" data-site="couple.second">Mateusz</span>
+      </h1>
+      <p class="hero__date"><time id="hero-date" datetime=""></time></p>
+      <p class="hero__place" data-i18n="hero.place">Miasto, Polska</p>
+
+      <div class="countdown" id="countdown" aria-live="polite">
+        <div class="countdown__cell"><span class="countdown__num" data-cd="days">000</span><span class="countdown__label" data-i18n="count.days">dni</span></div>
+        <div class="countdown__cell"><span class="countdown__num" data-cd="hours">00</span><span class="countdown__label" data-i18n="count.hours">godzin</span></div>
+        <div class="countdown__cell"><span class="countdown__num" data-cd="minutes">00</span><span class="countdown__label" data-i18n="count.minutes">minut</span></div>
+        <div class="countdown__cell"><span class="countdown__num" data-cd="seconds">00</span><span class="countdown__label" data-i18n="count.seconds">sekund</span></div>
+      </div>
+
+      <a class="btn btn--solid hero__cta" href="#rsvp" data-i18n="hero.rsvp">Potwierdź obecność</a>
+    </div>
+    <a class="hero__scroll" href="#story"><span data-i18n="hero.scroll">Przewiń</span><i></i></a>
+  </section>
+
+  <!-- STORY -->
+  <section class="section" id="story">
+    <div class="wrap">
+      <header class="section__head reveal">
+        <p class="eyebrow"><span data-i18n="story.num">I</span></p>
+        <h2 data-i18n="story.title">Nasza historia</h2>
+        <p class="lead" data-i18n="story.lead"></p>
+      </header>
+      <ol class="milestones" id="milestones"></ol>
+    </div>
+  </section>
+
+  <!-- DAY -->
+  <section class="section section--tint" id="day">
+    <div class="wrap">
+      <header class="section__head reveal">
+        <p class="eyebrow"><span data-i18n="day.num">II</span></p>
+        <h2 data-i18n="day.title">Plan dnia</h2>
+        <p class="lead" data-i18n="day.lead"></p>
+      </header>
+      <ol class="timeline" id="timeline"></ol>
+    </div>
+  </section>
+
+  <!-- VENUE -->
+  <section class="section" id="venue">
+    <div class="wrap">
+      <header class="section__head reveal">
+        <p class="eyebrow"><span data-i18n="venue.num">III</span></p>
+        <h2 data-i18n="venue.title">Miejsce</h2>
+        <p class="lead" data-i18n="venue.lead"></p>
+      </header>
+      <div class="venues">
+        <article class="venue reveal">
+          <p class="venue__kind" data-i18n="venue.ceremony">Ceremonia</p>
+          <h3 class="venue__name" data-site="ceremony.name"></h3>
+          <p class="venue__time"><span data-i18n="venue.at">godz.</span> <span data-site="ceremony.time"></span></p>
+          <p class="venue__addr"><svg class="ico"><use href="#icon-pin"/></svg><span data-site="ceremony.address"></span></p>
+          <a class="btn btn--ghost" data-site-href="ceremony.mapsUrl" target="_blank" rel="noopener"><span data-i18n="venue.map">Otwórz w mapach</span><svg class="ico"><use href="#icon-arrow"/></svg></a>
+        </article>
+        <article class="venue reveal">
+          <p class="venue__kind" data-i18n="venue.reception">Przyjęcie</p>
+          <h3 class="venue__name" data-site="reception.name"></h3>
+          <p class="venue__time"><span data-i18n="venue.at">godz.</span> <span data-site="reception.time"></span></p>
+          <p class="venue__addr"><svg class="ico"><use href="#icon-pin"/></svg><span data-site="reception.address"></span></p>
+          <a class="btn btn--ghost" data-site-href="reception.mapsUrl" target="_blank" rel="noopener"><span data-i18n="venue.map">Otwórz w mapach</span><svg class="ico"><use href="#icon-arrow"/></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAY -->
+  <section class="section section--tint" id="stay">
+    <div class="wrap">
+      <header class="section__head reveal">
+        <p class="eyebrow"><span data-i18n="stay.num">IV</span></p>
+        <h2 data-i18n="stay.title">Noclegi</h2>
+        <p class="lead" data-i18n="stay.lead"></p>
+      </header>
+      <ul class="stays" id="stays"></ul>
+      <p class="note reveal" data-i18n="stay.need"></p>
+    </div>
+  </section>
+
+  <!-- TRAVEL -->
+  <section class="section" id="travel">
+    <div class="wrap">
+      <header class="section__head reveal">
+        <p class="eyebrow"><span data-i18n="travel.num">V</span></p>
+        <h2 data-i18n="travel.title">Dojazd</h2>
+        <p class="lead" data-i18n="travel.lead"></p>
+      </header>
+      <div class="cards cards--3">
+        <article class="card reveal">
+          <svg class="card__ico"><use href="#icon-bus"/></svg>
+          <h3 data-i18n="travel.bus.title">Autokar</h3>
+          <p data-i18n-html="travel.bus.text"></p>
+        </article>
+        <article class="card reveal">
+          <svg class="card__ico"><use href="#icon-car"/></svg>
+          <h3 data-i18n="travel.car.title">Samochód</h3>
+          <p data-i18n-html="travel.car.text"></p>
+        </article>
+        <article class="card reveal">
+          <svg class="card__ico"><use href="#icon-plane"/></svg>
+          <h3 data-i18n="travel.public.title">Pociąg i samolot</h3>
+          <p data-i18n-html="travel.public.text"></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO -->
+  <section class="section section--tint" id="info">
+    <div class="wrap">
+      <header class="section__head reveal">
+        <p class="eyebrow"><span data-i18n="info.num">VI</span></p>
+        <h2 data-i18n="info.title">Dobrze wiedzieć</h2>
+        <p class="lead" data-i18n="info.lead"></p>
+      </header>
+      <div class="infogrid">
+        <article class="reveal"><h3 data-i18n="info.dress.title"></h3><p data-i18n="info.dress.text"></p></article>
+        <article class="reveal"><h3 data-i18n="info.gifts.title"></h3><p data-i18n="info.gifts.text"></p></article>
+        <article class="reveal"><h3 data-i18n="info.kids.title"></h3><p data-i18n="info.kids.text"></p></article>
+        <article class="reveal"><h3 data-i18n="info.photos.title"></h3><p><span data-i18n="info.photos.text"></span> <strong class="hashtag" data-site="hashtag"></strong></p></article>
+      </div>
+      <div class="faq reveal">
+        <h3 class="faq__title" data-i18n="info.faq.title">Częste pytania</h3>
+        <details><summary><span data-i18n="info.faq.1.q"></span><svg class="ico"><use href="#icon-plus"/></svg></summary><p data-i18n="info.faq.1.a"></p></details>
+        <details><summary><span data-i18n="info.faq.2.q"></span><svg class="ico"><use href="#icon-plus"/></svg></summary><p data-i18n="info.faq.2.a"></p></details>
+        <details><summary><span data-i18n="info.faq.3.q"></span><svg class="ico"><use href="#icon-plus"/></svg></summary><p data-i18n="info.faq.3.a"></p></details>
+        <details><summary><span data-i18n="info.faq.4.q"></span><svg class="ico"><use href="#icon-plus"/></svg></summary><p data-i18n="info.faq.4.a"></p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section class="section section--rsvp" id="rsvp">
+    <svg class="rsvp__branch" aria-hidden="true"><use href="#branch"/></svg>
+    <div class="wrap wrap--narrow">
+      <header class="section__head section__head--center reveal">
+        <p class="eyebrow eyebrow--center"><span data-i18n="rsvp.num">VII</span></p>
+        <h2 data-i18n="rsvp.title">Potwierdź obecność</h2>
+        <p class="lead" data-i18n-html="rsvp.lead"></p>
+      </header>
+
+      <form class="form reveal" id="rsvp-form" novalidate>
+        <p class="form__notice" id="rsvp-notice" hidden data-i18n="rsvp.notConfigured"></p>
+
+        <fieldset class="form__group">
+          <legend data-i18n="rsvp.guests">Goście</legend>
+          <div id="guest-list"></div>
+          <button class="btn btn--ghost btn--sm" type="button" id="add-guest"><svg class="ico"><use href="#icon-plus"/></svg><span data-i18n="rsvp.addGuest">Dodaj osobę</span></button>
+        </fieldset>
+
+        <fieldset class="form__group">
+          <legend data-i18n="rsvp.contact">Kontakt</legend>
+          <div class="form__row">
+            <label class="field"><span data-i18n="rsvp.email">E-mail</span><input type="email" name="email" autocomplete="email" required></label>
+            <label class="field"><span data-i18n="rsvp.phone">Telefon</span><input type="tel" name="phone" autocomplete="tel"></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="form__group">
+          <legend data-i18n="rsvp.logistics">Logistyka</legend>
+          <label class="toggle">
+            <input type="checkbox" name="transport" id="transport">
+            <span class="toggle__box"><svg class="ico"><use href="#icon-check"/></svg></span>
+            <span class="toggle__text"><strong data-i18n="rsvp.transport"></strong><small data-i18n="rsvp.transport.hint"></small></span>
+          </label>
+          <div class="form__sub" data-show-if="transport">
+            <label class="field"><span data-i18n="rsvp.transportFrom"></span><input type="text" name="transportFrom" data-i18n-attr="placeholder:rsvp.transportFrom.ph"></label>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" name="stay" id="stay-need">
+            <span class="toggle__box"><svg class="ico"><use href="#icon-check"/></svg></span>
+            <span class="toggle__text"><strong data-i18n="rsvp.stay"></strong><small data-i18n="rsvp.stay.hint"></small></span>
+          </label>
+          <div class="form__sub" data-show-if="stay-need">
+            <label class="field field--short"><span data-i18n="rsvp.nights"></span><input type="number" name="nights" min="1" max="7" value="1"></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="form__group">
+          <legend data-i18n="rsvp.extras">Na koniec</legend>
+          <label class="field"><span data-i18n="rsvp.song"></span><input type="text" name="song" data-i18n-attr="placeholder:rsvp.song.ph"></label>
+          <label class="field"><span data-i18n="rsvp.message"></span><textarea name="message" rows="3" data-i18n-attr="placeholder:rsvp.message.ph"></textarea></label>
+        </fieldset>
+
+        <!-- honeypot: real people never see or fill this -->
+        <label class="hp" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+
+        <div class="form__actions">
+          <button class="btn btn--solid btn--lg" type="submit" id="rsvp-submit"><span data-i18n="rsvp.submit">Wyślij odpowiedź</span><svg class="ico"><use href="#icon-arrow"/></svg></button>
+          <p class="form__privacy" data-i18n="rsvp.privacy"></p>
+        </div>
+        <p class="form__error" id="rsvp-error" role="alert" hidden data-i18n="rsvp.error"></p>
+      </form>
+
+      <div class="form__success" id="rsvp-success" hidden>
+        <svg class="form__success-branch" aria-hidden="true"><use href="#branch"/></svg>
+        <h3 data-i18n="rsvp.success.title">Dziękujemy!</h3>
+        <p id="rsvp-success-text" data-i18n="rsvp.success.text"></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <p class="footer__sign"><span data-i18n="footer.sign">Z miłością</span></p>
+    <p class="footer__names"><span data-site="couple.first">Natalia</span> <span class="amp">&amp;</span> <span data-site="couple.second">Mateusz</span></p>
+    <p class="footer__date" id="footer-date"></p>
+    <p class="footer__q" data-i18n="footer.questions"></p>
+    <ul class="footer__contacts" id="contacts"></ul>
+    <p class="footer__hash" data-site="hashtag"></p>
+  </div>
+</footer>
+
+<template id="tpl-guest">
+  <div class="guest">
+    <div class="guest__head">
+      <span class="guest__title"><span data-i18n="rsvp.guest">Gość</span> <span class="guest__n">1</span></span>
+      <button class="guest__remove" type="button" data-i18n="rsvp.removeGuest">Usuń</button>
+    </div>
+    <label class="field"><span data-i18n="rsvp.name">Imię i nazwisko</span><input type="text" name="name" autocomplete="name" required data-i18n-attr="placeholder:rsvp.name.ph"></label>
+    <div class="field">
+      <span data-i18n="rsvp.attending">Obecność</span>
+      <div class="seg" role="radiogroup">
+        <label><input type="radio" name="attending" value="yes" checked><span data-i18n="rsvp.yes">Będę</span></label>
+        <label><input type="radio" name="attending" value="no"><span data-i18n="rsvp.no">Nie dam rady</span></label>
+      </div>
+    </div>
+    <div class="guest__menu">
+      <div class="field">
+        <span data-i18n="rsvp.menu">Menu</span>
+        <div class="seg seg--wrap" role="radiogroup">
+          <label><input type="radio" name="menu" value="meat" checked><span data-i18n="rsvp.menu.meat"></span></label>
+          <label><input type="radio" name="menu" value="fish"><span data-i18n="rsvp.menu.fish"></span></label>
+          <label><input type="radio" name="menu" value="vegetarian"><span data-i18n="rsvp.menu.veg"></span></label>
+          <label><input type="radio" name="menu" value="vegan"><span data-i18n="rsvp.menu.vegan"></span></label>
+          <label><input type="radio" name="menu" value="kid"><span data-i18n="rsvp.menu.kid"></span></label>
+        </div>
+      </div>
+      <label class="field"><span data-i18n="rsvp.diet">Alergie, dieta</span><input type="text" name="diet" data-i18n-attr="placeholder:rsvp.diet.ph"></label>
+    </div>
+  </div>
+</template>
+
+<script src="assets/js/content.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
