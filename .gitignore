@@ -1,22 +1,5 @@
-# Dependencies & build output (also never synced to battlestation)
-node_modules/
-.venv/
-venv/
-__pycache__/
-.pytest_cache/
-.mypy_cache/
-target/
-dist/
-build/
-obj/
-
-# Local-only
 .env
 .env.*
-!.env.example
 *.log
 .scratch/
 .claude/settings.local.json
-
-# Worker conversation ids (bs delegate)
-tasks/*.conversation

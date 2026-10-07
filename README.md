@@ -44,7 +44,8 @@ https://docs.google.com/spreadsheets/d/1TGCOZrAQv_n_R4-glVQMHevSbVXs9qDYRYkVSDSu
    Description: "rsvp" · Execute as: **Me** · Who has access: **Anyone**. Deploy, authorise.
 4. Copy the **Web app URL** (ends with `/exec`) into `SITE.rsvpEndpoint` in
    `assets/js/content.js`. Until then the form shows "not connected yet".
-5. Test: submit the form once; a sheet tab `RSVP` appears with one row per guest.
+5. Test: submit the form once; a sheet tab `Odpowiedzi` appears with one row per guest.
+   Headers and values are in Polish (tak/nie, mięsne/rybne/…).
 
 Changing the script later: Deploy → Manage deployments → edit → "New version" (the URL stays).
 
@@ -77,8 +78,9 @@ app.netlify.com/drop: drag the project folder into the browser. Re-drag to updat
 
 ## Local preview
 
-Open `index.html` directly in a browser (`file://`). Fonts load from Google Fonts, so an
-internet connection is needed for the final look.
+Any static server, e.g. `python3 -m http.server 8765` in this folder, then
+http://127.0.0.1:8765/. Fonts load from Google Fonts, so an internet connection is needed
+for the final look.
 
 ## Privacy
 
