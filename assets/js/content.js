@@ -17,7 +17,7 @@ window.SITE = {
 
   // Google Apps Script "web app" URL that stores RSVPs in a Google Sheet.
   // Leave empty until set up (see README.md). The form then shows a notice.
-  rsvpEndpoint: "",
+  rsvpEndpoint: "https://script.google.com/macros/s/AKfycbwsLOggSQfNEIowVBxzZ2jNy6j1EYyjq096IYAwVLRVoDTjnIx7qbIA6QF9r_94bpjK/exec",
 
   defaultLang: "pl",
 
