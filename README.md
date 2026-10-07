@@ -31,7 +31,10 @@ Save, commit, push: the hosting rebuilds automatically.
 
 ## RSVP backend (Google Sheet, free)
 
-1. Create a new Google Sheet (e.g. "Wesele RSVP") in the couple's Google account.
+Sheet (created 2026-10-07, owner l.kotkiewicz@gmail.com):
+https://docs.google.com/spreadsheets/d/1TGCOZrAQv_n_R4-glVQMHevSbVXs9qDYRYkVSDSuBqI/edit
+
+1. Open the sheet above (or create a new one in the couple's Google account).
 2. Extensions → Apps Script. Delete the default code, paste `apps-script/Code.gs`, save.
    Optionally set `NOTIFY_EMAIL` at the top to get an e-mail per reply.
 3. Deploy → New deployment → gear icon → **Web app**.
@@ -45,8 +48,9 @@ Changing the script later: Deploy → Manage deployments → edit → "New versi
 ## Hosting (free)
 
 ### Option A: GitHub Pages (recommended, one place for code and hosting)
-1. Create a GitHub repository (public or private both work with Pages on free plans for
-   public; private needs Pro), push this folder.
+Repository: https://github.com/k0t-koxur/mati-nati (public). Pushes from the laptop use
+the dedicated key `~/.ssh/github_ed25519` (host entry in `~/.ssh/config.d/github.conf`).
+1. Create the repository on GitHub (public), push this folder.
 2. Repository → Settings → Pages → Source: "Deploy from a branch", branch `main`, folder `/`.
 3. The site is live at `https://<user>.github.io/<repo>/` within a minute of every push.
 
