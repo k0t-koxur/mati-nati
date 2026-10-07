@@ -7,6 +7,9 @@ transport and accommodation needs into a Google Sheet.
 No build step, no framework, no server: plain HTML, CSS and JavaScript. Hosting is free;
 the only cost is an optional domain.
 
+**Live:** https://k0t-koxur.github.io/mati-nati/ (GitHub Pages, branch `main`, root). Every
+push to `main` redeploys within about a minute.
+
 ## Files
 
 | File | Purpose |
