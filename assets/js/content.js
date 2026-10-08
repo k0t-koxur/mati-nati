@@ -22,7 +22,7 @@ window.SITE = {
   // Przycisk pojawia się na stronie od daty "from" (dzień przed weselem); do tego czasu
   // goście widzą zapowiedź. Pusty "url" = zapowiedź także po tej dacie.
   photos: {
-    url: "", // TODO: link do folderu na Dysku Google
+    url: "https://drive.google.com/drive/folders/1bg9kXMeAA84sQ0jz10GruBN04hv4V5xk",
     from: "2027-08-01T00:00:00+02:00"
   },
 

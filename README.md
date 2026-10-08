@@ -37,12 +37,16 @@ Everything the guests read lives in `assets/js/content.js`:
 
 ### Photo folder (Google Drive, no sign-in for guests)
 
-1. In Google Drive create a folder, e.g. "Wesele · zdjęcia gości".
-2. Share → General access: **Anyone with the link** → role **Editor**. Anonymous visitors
-   can then upload files into it from the folder page (they appear as "Anonymous").
-3. Paste the folder link into `SITE.photos.url`, commit, push. The button shows itself
-   on the date in `SITE.photos.from`; nothing to do on the day.
-4. After the wedding switch the folder back to Viewer so nothing can be added or removed.
+Folder "Wesele Natalia & Mateusz · zdjęcia gości" exists in l.kotkiewicz's Drive
+(created 2026-10-08, 5 TB plan) and its link is already in `SITE.photos.url`. The site
+shows the button from `SITE.photos.from` (2027-08-01) on its own. The folder itself is
+kept **Restricted** until then, because the link is readable in this public repository.
+
+1. Around 2027-07-30: open the folder → Share → General access: **Anyone with the link**
+   → role **Editor**. Anonymous visitors can then upload from the folder page (their files
+   show as "Anonymous" and are owned by the folder owner). Test once from a phone.
+2. Mid-August 2027: switch General access back to **Viewer** (or Restricted) so nothing
+   can be added or removed, then hand the photos to the couple.
 
 Save, commit, push: the hosting rebuilds automatically.
 
