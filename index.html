@@ -7,7 +7,7 @@
   <meta name="description" data-i18n-attr="content:meta.description" content="Zapraszamy na nasz ślub.">
   <meta name="theme-color" content="#F5F0E6">
   <meta property="og:title" content="Natalia & Mateusz">
-  <meta property="og:description" content="Zapraszamy na nasz ślub.">
+  <meta property="og:description" content="2 sierpnia 2027, Gościniec Nałęże, Jaworze. Informacje dla gości i potwierdzenie obecności.">
   <meta property="og:type" content="website">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,6 +41,7 @@
     <symbol id="icon-bus" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="4" y="4" width="16" height="14" rx="3"/><path d="M4 11h16M8 21v-3M16 21v-3"/><circle cx="8.5" cy="15" r=".8" fill="currentColor"/><circle cx="15.5" cy="15" r=".8" fill="currentColor"/></g></symbol>
     <symbol id="icon-car" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14l1.6-5A2 2 0 0 1 7.5 7.5h9a2 2 0 0 1 1.9 1.5L20 14v4H4z"/><path d="M4 14h16M7 18v1.5M17 18v1.5"/><circle cx="8" cy="15.8" r=".8" fill="currentColor"/><circle cx="16" cy="15.8" r=".8" fill="currentColor"/></g></symbol>
     <symbol id="icon-plane" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M10 21l2-7 7-5a1.6 1.6 0 0 0-1.5-2.6L10 9 5 5 3 6l4 5-3 3 1 1 4-1 2 7z"/></symbol>
+    <symbol id="icon-train" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 10h14M9 17l-2 4M15 17l2 4M8 21h8"/><circle cx="9" cy="13.5" r=".8" fill="currentColor"/><circle cx="15" cy="13.5" r=".8" fill="currentColor"/></g></symbol>
     <symbol id="icon-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></symbol>
   </defs>
 </svg>
@@ -124,20 +125,13 @@
         <h2 data-i18n="venue.title">Miejsce</h2>
         <p class="lead" data-i18n="venue.lead"></p>
       </header>
-      <div class="venues">
+      <div class="venues venues--one">
         <article class="venue reveal">
-          <p class="venue__kind" data-i18n="venue.ceremony">Ceremonia</p>
-          <h3 class="venue__name" data-site="ceremony.name"></h3>
-          <p class="venue__time"><span data-i18n="venue.at">godz.</span> <span data-site="ceremony.time"></span></p>
-          <p class="venue__addr"><svg class="ico"><use href="#icon-pin"/></svg><span data-site="ceremony.address"></span></p>
-          <a class="btn btn--ghost" data-site-href="ceremony.mapsUrl" target="_blank" rel="noopener"><span data-i18n="venue.map">Otwórz w mapach</span><svg class="ico"><use href="#icon-arrow"/></svg></a>
-        </article>
-        <article class="venue reveal">
-          <p class="venue__kind" data-i18n="venue.reception">Przyjęcie</p>
-          <h3 class="venue__name" data-site="reception.name"></h3>
-          <p class="venue__time"><span data-i18n="venue.at">godz.</span> <span data-site="reception.time"></span></p>
-          <p class="venue__addr"><svg class="ico"><use href="#icon-pin"/></svg><span data-site="reception.address"></span></p>
-          <a class="btn btn--ghost" data-site-href="reception.mapsUrl" target="_blank" rel="noopener"><span data-i18n="venue.map">Otwórz w mapach</span><svg class="ico"><use href="#icon-arrow"/></svg></a>
+          <p class="venue__kind" data-i18n="venue.kind">Ślub i wesele</p>
+          <h3 class="venue__name" data-site="venue.name"></h3>
+          <p class="venue__time"><span data-i18n="venue.ceremonyAt">Ceremonia o</span> <span data-site="venue.ceremonyTime"></span> · <span data-i18n="venue.receptionAt">przyjęcie ok.</span> <span data-site="venue.receptionTime"></span></p>
+          <p class="venue__addr"><svg class="ico"><use href="#icon-pin"/></svg><span data-site="venue.address"></span></p>
+          <a class="btn btn--ghost" data-site-href="venue.mapsUrl" target="_blank" rel="noopener"><span data-i18n="venue.map">Otwórz w mapach</span><svg class="ico"><use href="#icon-arrow"/></svg></a>
         </article>
       </div>
     </div>
@@ -151,8 +145,7 @@
         <h2 data-i18n="stay.title">Noclegi</h2>
         <p class="lead" data-i18n="stay.lead"></p>
       </header>
-      <ul class="stays" id="stays"></ul>
-      <p class="note reveal" data-i18n="stay.need"></p>
+      <p class="stay__text reveal" data-i18n="stay.text"></p>
     </div>
   </section>
 
@@ -176,8 +169,8 @@
           <p data-i18n-html="travel.car.text"></p>
         </article>
         <article class="card reveal">
-          <svg class="card__ico"><use href="#icon-plane"/></svg>
-          <h3 data-i18n="travel.public.title">Pociąg i samolot</h3>
+          <svg class="card__ico"><use href="#icon-train"/></svg>
+          <h3 data-i18n="travel.public.title">Komunikacja</h3>
           <p data-i18n-html="travel.public.text"></p>
         </article>
       </div>
@@ -242,17 +235,6 @@
             <span class="toggle__box"><svg class="ico"><use href="#icon-check"/></svg></span>
             <span class="toggle__text"><strong data-i18n="rsvp.transport"></strong><small data-i18n="rsvp.transport.hint"></small></span>
           </label>
-          <div class="form__sub" data-show-if="transport">
-            <label class="field"><span data-i18n="rsvp.transportFrom"></span><input type="text" name="transportFrom" data-i18n-attr="placeholder:rsvp.transportFrom.ph"></label>
-          </div>
-          <label class="toggle">
-            <input type="checkbox" name="stay" id="stay-need">
-            <span class="toggle__box"><svg class="ico"><use href="#icon-check"/></svg></span>
-            <span class="toggle__text"><strong data-i18n="rsvp.stay"></strong><small data-i18n="rsvp.stay.hint"></small></span>
-          </label>
-          <div class="form__sub" data-show-if="stay-need">
-            <label class="field field--short"><span data-i18n="rsvp.nights"></span><input type="number" name="nights" min="1" max="7" value="1"></label>
-          </div>
         </fieldset>
 
         <fieldset class="form__group">
@@ -310,9 +292,7 @@
         <span data-i18n="rsvp.menu">Menu</span>
         <div class="seg seg--wrap" role="radiogroup">
           <label><input type="radio" name="menu" value="meat" checked><span data-i18n="rsvp.menu.meat"></span></label>
-          <label><input type="radio" name="menu" value="fish"><span data-i18n="rsvp.menu.fish"></span></label>
           <label><input type="radio" name="menu" value="vegetarian"><span data-i18n="rsvp.menu.veg"></span></label>
-          <label><input type="radio" name="menu" value="vegan"><span data-i18n="rsvp.menu.vegan"></span></label>
           <label><input type="radio" name="menu" value="kid"><span data-i18n="rsvp.menu.kid"></span></label>
         </div>
       </div>

@@ -46,17 +46,12 @@
 
     $("#milestones").innerHTML = SITE.milestones.map(function (m) {
       var x = m[lang] || m.pl;
-      return '<li class="reveal-item"><div class="ms__year">' + esc(m.year) + '</div><h3>' + esc(x[0]) + '</h3><p>' + esc(x[1]) + '</p></li>';
+      return '<li class="reveal-item"><div class="ms__year">' + esc(pick(m.year)) + '</div><h3>' + esc(x[0]) + '</h3><p>' + esc(x[1]) + '</p></li>';
     }).join("");
 
     $("#timeline").innerHTML = SITE.schedule.map(function (s) {
       var x = s[lang] || s.pl;
-      return '<li class="reveal-item"><div class="tl__time">' + esc(s.time) + '</div><div class="tl__dot"></div><div><h3>' + esc(x[0]) + '</h3><p>' + esc(x[1]) + '</p></div></li>';
-    }).join("");
-
-    $("#stays").innerHTML = SITE.stay.map(function (s) {
-      return '<li class="reveal-item"><span class="st__name">' + esc(s.name) + '</span><span class="st__dist">' + esc(pick(s.distance)) + '</span><span class="st__note">' + esc(pick(s.note)) + '</span>' +
-        (s.url ? '<a class="btn btn--ghost btn--sm" href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(t("stay.book")) + '</a>' : '') + '</li>';
+      return '<li class="reveal-item"><div class="tl__time">' + esc(pick(s.time)) + '</div><div class="tl__dot"></div><div><h3>' + esc(x[0]) + '</h3><p>' + esc(x[1]) + '</p></div></li>';
     }).join("");
 
     $("#contacts").innerHTML = SITE.contacts.map(function (c) {
@@ -172,8 +167,7 @@
     return {
       lang: lang, submittedAt: new Date().toISOString(), website: f.website.value,
       guests: guests, email: f.email.value.trim(), phone: f.phone.value.trim(),
-      transport: f.transport.checked, transportFrom: f.transport.checked ? f.transportFrom.value.trim() : "",
-      stay: f.stay.checked, nights: f.stay.checked ? Number(f.nights.value) || 1 : 0,
+      transport: f.transport.checked,
       song: f.song.value.trim(), message: f.message.value.trim(),
       userAgent: navigator.userAgent
     };

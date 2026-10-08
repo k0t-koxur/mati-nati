@@ -1,8 +1,8 @@
 # Natalia & Mateusz · wedding website
 
-A single-page, bilingual (PL/EN) wedding site for guests: story, schedule, venues,
-accommodation, travel, FAQ and an RSVP form that collects menu choices, dietary needs,
-transport and accommodation needs into a Google Sheet.
+A single-page, bilingual (PL/EN) wedding site for guests: story, schedule, venue,
+accommodation, travel, FAQ and an RSVP form that collects menu choices, dietary needs
+and whether guests take the minibus from Rybnik into a Google Sheet.
 
 No build step, no framework, no server: plain HTML, CSS and JavaScript. Hosting is free;
 the only cost is an optional domain.
@@ -25,7 +25,7 @@ push to `main` redeploys within about a minute.
 
 Everything the guests read lives in `assets/js/content.js`:
 
-- `SITE.couple`, `SITE.date`, `SITE.rsvpDeadline`, venues, hotels, contacts, schedule,
+- `SITE.couple`, `SITE.date`, `SITE.rsvpDeadline`, `SITE.venue`, contacts, schedule,
   story milestones. Entries marked `TODO` are placeholders.
 - `I18N.pl` / `I18N.en`: every sentence on the page, keyed by section. Keep the keys,
   change the values. `{deadline}` is replaced by the formatted RSVP deadline.
@@ -45,9 +45,11 @@ https://docs.google.com/spreadsheets/d/1TGCOZrAQv_n_R4-glVQMHevSbVXs9qDYRYkVSDSu
 4. Copy the **Web app URL** (ends with `/exec`) into `SITE.rsvpEndpoint` in
    `assets/js/content.js`. Until then the form shows "not connected yet".
 5. Test: submit the form once; a sheet tab `Odpowiedzi` appears with one row per guest.
-   Headers and values are in Polish (tak/nie, mięsne/rybne/…).
+   Headers and values are in Polish (tak/nie, mięsne/wegetariańskie/dziecięce).
 
 Changing the script later: Deploy → Manage deployments → edit → "New version" (the URL stays).
+If the columns changed, delete or rename the old `Odpowiedzi` tab first; the script creates
+a fresh one with the right headers on the next reply.
 
 ## Hosting (free)
 

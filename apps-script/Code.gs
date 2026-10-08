@@ -11,6 +11,9 @@
  *     Adres URL (kończy się na /exec) pozostaje ten sam.
  *  3. Adres wpisany jest w SITE.rsvpEndpoint w assets/js/content.js.
  *  4. (Opcjonalnie) wpisz poniżej NOTIFY_EMAIL, aby dostawać e-mail o każdej odpowiedzi.
+ *
+ * Uwaga: po zmianie listy kolumn (HEADERS) usuń lub zmień nazwę starej zakładki
+ * „Odpowiedzi”; skrypt założy nową z właściwymi nagłówkami przy następnej odpowiedzi.
  */
 
 var NOTIFY_EMAIL = "";              // np. "natalia@example.com"; puste = bez e-maili
@@ -18,11 +21,11 @@ var SHEET_NAME = "Odpowiedzi";      // nazwa zakładki; tworzona przy pierwszej 
 
 var HEADERS = [
   "Otrzymano", "Gość", "Obecność", "Menu", "Alergie / dieta",
-  "E-mail", "Telefon", "Autokar", "Wsiada w", "Nocleg", "Liczba nocy",
+  "E-mail", "Telefon", "Bus z Rybnika",
   "Piosenka", "Wiadomość", "Język", "Nr odpowiedzi"
 ];
 
-var MENU = { meat: "mięsne", fish: "rybne", vegetarian: "wegetariańskie", vegan: "wegańskie", kid: "dziecięce" };
+var MENU = { meat: "mięsne", vegetarian: "wegetariańskie", kid: "dziecięce" };
 var LANG = { pl: "polski", en: "angielski" };
 
 function doPost(e) {
@@ -42,8 +45,7 @@ function doPost(e) {
         var attending = !!g.attending;
         return [
           received, s_(g.name), yn_(attending), attending ? (MENU[g.menu] || s_(g.menu)) : "", attending ? s_(g.diet) : "",
-          s_(data.email), s_(data.phone), yn_(data.transport), data.transport ? s_(data.transportFrom) : "",
-          yn_(data.stay), data.stay ? Number(data.nights) || 1 : "",
+          s_(data.email), s_(data.phone), yn_(data.transport),
           s_(data.song), s_(data.message), LANG[data.lang] || s_(data.lang), id
         ];
       });
@@ -75,7 +77,7 @@ function getSheet_() {
     sheet.setFrozenRows(1);
     sheet.setColumnWidths(1, 1, 130);
     sheet.setColumnWidths(2, 1, 200);
-    sheet.setColumnWidths(13, 1, 320);
+    sheet.setColumnWidths(10, 1, 320);
   }
   return sheet;
 }
@@ -88,8 +90,7 @@ function notify_(data) {
       : "nie będzie");
   }).join("\n") +
   "\n\nE-mail: " + data.email + "\nTelefon: " + data.phone +
-  "\nAutokar: " + (data.transport ? "tak, z: " + data.transportFrom : "nie") +
-  "\nNocleg: " + (data.stay ? "tak, " + data.nights + " noc(e)" : "nie") +
+  "\nBus z Rybnika: " + yn_(data.transport) +
   (data.song ? "\nPiosenka: " + data.song : "") +
   (data.message ? "\n\nWiadomość:\n" + data.message : "");
   MailApp.sendEmail(NOTIFY_EMAIL, "RSVP: " + names, body);
