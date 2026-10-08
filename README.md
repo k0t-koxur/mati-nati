@@ -48,6 +48,8 @@ https://docs.google.com/spreadsheets/d/1TGCOZrAQv_n_R4-glVQMHevSbVXs9qDYRYkVSDSu
    Headers and values are in Polish (tak/nie, mięsne/wegetariańskie/dziecięce).
 
 Changing the script later: Deploy → Manage deployments → edit → "New version" (the URL stays).
+If the new version does not take effect, create a new deployment instead; its URL is
+different, so update `SITE.rsvpEndpoint` in `assets/js/content.js` and push.
 If the columns changed, delete or rename the old `Odpowiedzi` tab first; the script creates
 a fresh one with the right headers on the next reply.
 

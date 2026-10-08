@@ -13,5 +13,8 @@ never be synced to or run on battlestation. Do not use `bs` here.
   minute at https://k0t-koxur.github.io/mati-nati/ (assets cached ~10 min).
 - RSVP backend: `apps-script/Code.gs`. Changing it means pasting it into the Apps Script
   editor of the sheet "Wesele RSVP · Natalia & Mateusz" and Deploy → Manage deployments →
-  New version (URL stays). Only the user can do that.
+  New version. Only the user can do that. If that does not take (it didn't on 2026-10-08),
+  a new deployment is needed and the URL changes: update `SITE.rsvpEndpoint`, commit, push.
+  Test without writing to the sheet: POST with `"website":"bot"` (honeypot) and GET the
+  `redirect_url` curl reports; expect `{"ok":true}`.
 - Off-site copy is the public GitHub repo (this folder is not in `bs backup`).
