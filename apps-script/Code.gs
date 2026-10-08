@@ -20,13 +20,12 @@ var NOTIFY_EMAIL = "";              // np. "natalia@example.com"; puste = bez e-
 var SHEET_NAME = "Odpowiedzi";      // nazwa zakładki; tworzona przy pierwszej odpowiedzi
 
 var HEADERS = [
-  "Otrzymano", "Gość", "Obecność", "Menu", "Alergie / dieta",
+  "Otrzymano", "Gość", "Obecność", "Menu",
   "E-mail", "Telefon", "Bus z Rybnika",
-  "Piosenka", "Wiadomość", "Język", "Nr odpowiedzi"
+  "Piosenka", "Wiadomość", "Nr odpowiedzi"
 ];
 
 var MENU = { meat: "mięsne", vegetarian: "wegetariańskie", kid: "dziecięce" };
-var LANG = { pl: "polski", en: "angielski" };
 
 function doPost(e) {
   var out = { ok: false };
@@ -44,9 +43,9 @@ function doPost(e) {
       var rows = data.guests.map(function (g) {
         var attending = !!g.attending;
         return [
-          received, s_(g.name), yn_(attending), attending ? (MENU[g.menu] || s_(g.menu)) : "", attending ? s_(g.diet) : "",
+          received, s_(g.name), yn_(attending), attending ? (MENU[g.menu] || s_(g.menu)) : "",
           s_(data.email), s_(data.phone), yn_(data.transport),
-          s_(data.song), s_(data.message), LANG[data.lang] || s_(data.lang), id
+          s_(data.song), s_(data.message), id
         ];
       });
       var first = sheet.getLastRow() + 1;
@@ -77,7 +76,7 @@ function getSheet_() {
     sheet.setFrozenRows(1);
     sheet.setColumnWidths(1, 1, 130);
     sheet.setColumnWidths(2, 1, 200);
-    sheet.setColumnWidths(10, 1, 320);
+    sheet.setColumnWidths(9, 1, 320);
   }
   return sheet;
 }
@@ -86,7 +85,7 @@ function notify_(data) {
   var names = data.guests.map(function (g) { return g.name + (g.attending ? " ✓" : " ✗"); }).join(", ");
   var body = data.guests.map(function (g) {
     return "- " + g.name + ": " + (g.attending
-      ? "będzie, menu: " + (MENU[g.menu] || g.menu) + (g.diet ? ", dieta: " + g.diet : "")
+      ? "będzie, menu: " + (MENU[g.menu] || g.menu)
       : "nie będzie");
   }).join("\n") +
   "\n\nE-mail: " + data.email + "\nTelefon: " + data.phone +

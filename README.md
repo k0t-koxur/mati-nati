@@ -1,8 +1,9 @@
 # Natalia & Mateusz · wedding website
 
-A single-page, bilingual (PL/EN) wedding site for guests: story, schedule, venue,
-accommodation, travel, FAQ and an RSVP form that collects menu choices, dietary needs
-and whether guests take the minibus from Rybnik into a Google Sheet.
+A single-page, Polish-only wedding site for guests: story, schedule, venue,
+accommodation, travel, FAQ, a photo-upload link that appears the day before the wedding,
+and an RSVP form that collects menu choices and whether guests take the minibus from
+Rybnik into a Google Sheet.
 
 No build step, no framework, no server: plain HTML, CSS and JavaScript. Hosting is free;
 the only cost is an optional domain.
@@ -16,8 +17,8 @@ push to `main` redeploys within about a minute.
 |---|---|
 | `index.html` | page structure (sections, form, SVG decorations) |
 | `assets/css/style.css` | design: typography, colours, layout, motion |
-| `assets/js/content.js` | **all texts and details** (both languages) and settings: edit this |
-| `assets/js/main.js` | behaviour: language switch, countdown, rendering, RSVP submit |
+| `assets/js/content.js` | **all texts and details** and settings: edit this |
+| `assets/js/main.js` | behaviour: countdown, rendering, photo-link reveal, RSVP submit |
 | `apps-script/Code.gs` | Google Apps Script that stores RSVPs in a Google Sheet |
 | `assets/img/favicon.svg` | monogram favicon |
 
@@ -26,9 +27,22 @@ push to `main` redeploys within about a minute.
 Everything the guests read lives in `assets/js/content.js`:
 
 - `SITE.couple`, `SITE.date`, `SITE.rsvpDeadline`, `SITE.venue`, contacts, schedule,
-  story milestones. Entries marked `TODO` are placeholders.
-- `I18N.pl` / `I18N.en`: every sentence on the page, keyed by section. Keep the keys,
-  change the values. `{deadline}` is replaced by the formatted RSVP deadline.
+  story milestones. Entries marked `TODO` are placeholders. A milestone with an empty
+  `year` shows "20__ · rok do wpisania" on the page until a year is typed in.
+- `SITE.photos`: `url` of the shared Google Drive folder for guests' photos and `from`,
+  the moment the "Wrzuć zdjęcia" button appears (default: the day before the wedding).
+  Until then guests see a one-line announcement. Preview the button early with `?photos=1`.
+- `I18N.pl`: every sentence on the page, keyed by section. Keep the keys, change the
+  values. `{deadline}` is replaced by the formatted RSVP deadline.
+
+### Photo folder (Google Drive, no sign-in for guests)
+
+1. In Google Drive create a folder, e.g. "Wesele · zdjęcia gości".
+2. Share → General access: **Anyone with the link** → role **Editor**. Anonymous visitors
+   can then upload files into it from the folder page (they appear as "Anonymous").
+3. Paste the folder link into `SITE.photos.url`, commit, push. The button shows itself
+   on the date in `SITE.photos.from`; nothing to do on the day.
+4. After the wedding switch the folder back to Viewer so nothing can be added or removed.
 
 Save, commit, push: the hosting rebuilds automatically.
 
@@ -46,6 +60,8 @@ https://docs.google.com/spreadsheets/d/1TGCOZrAQv_n_R4-glVQMHevSbVXs9qDYRYkVSDSu
    `assets/js/content.js`. Until then the form shows "not connected yet".
 5. Test: submit the form once; a sheet tab `Odpowiedzi` appears with one row per guest.
    Headers and values are in Polish (tak/nie, mięsne/wegetariańskie/dziecięce).
+   Columns: Otrzymano, Gość, Obecność, Menu, E-mail, Telefon, Bus z Rybnika, Piosenka,
+   Wiadomość, Nr odpowiedzi.
 
 Changing the script later: Deploy → Manage deployments → edit → "New version" (the URL stays).
 If the new version does not take effect, create a new deployment instead; its URL is
@@ -88,5 +104,5 @@ for the final look.
 
 ## Privacy
 
-RSVP data (names, contact, dietary needs) is personal data. The form says it is used only
+RSVP data (names, contact details) is personal data. The form says it is used only
 for the wedding and deleted afterwards: do that (delete the sheet after the wedding).

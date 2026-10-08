@@ -1,29 +1,32 @@
 /* =====================================================================
-   WEDDING WEBSITE CONTENT
-   This is the only file you need to edit to update the website.
-   Everything marked TODO is a placeholder waiting for the real detail.
-   Texts exist twice: "pl" (Polish) and "en" (English).
+   TREŚĆ STRONY ŚLUBNEJ
+   To jedyny plik, który trzeba edytować, żeby zmienić teksty i szczegóły.
+   Wszystko oznaczone TODO to miejsce na prawdziwą informację.
    ===================================================================== */
 
 window.SITE = {
-  // Names as shown in the hero and the browser tab (first name first).
+  // Imiona w nagłówku i w tytule karty przeglądarki.
   couple: { first: "Natalia", second: "Mateusz" },
 
-  // Wedding date & time (ISO 8601 with timezone): the ceremony starts at 14:00.
+  // Data i godzina ślubu (ISO 8601 ze strefą): ceremonia zaczyna się o 14:00.
   date: "2027-08-02T14:00:00+02:00",
 
-  // Where guests should reply by (for now).
+  // Do kiedy goście mają odpowiedzieć.
   rsvpDeadline: "2027-03-01",
 
-  // Google Apps Script "web app" URL that stores RSVPs in a Google Sheet.
-  // Leave empty until set up (see README.md). The form then shows a notice.
+  // Adres "aplikacji internetowej" Google Apps Script, która zapisuje odpowiedzi w arkuszu.
+  // Pusty = formularz pokazuje komunikat "jeszcze nie podłączony" (patrz README.md).
   rsvpEndpoint: "https://script.google.com/macros/s/AKfycbw1z-ajevWHISRAfuY_vX3shSSNS8CAsUhQeF6evsMPQc1WBRlgDOUqEP7x_qhrXe_Z/exec",
 
-  defaultLang: "pl",
+  // Wspólny folder na zdjęcia gości (Dysk Google, "każdy z linkiem może edytować").
+  // Przycisk pojawia się na stronie od daty "from" (dzień przed weselem); do tego czasu
+  // goście widzą zapowiedź. Pusty "url" = zapowiedź także po tej dacie.
+  photos: {
+    url: "", // TODO: link do folderu na Dysku Google
+    from: "2027-08-01T00:00:00+02:00"
+  },
 
-  hashtag: "#MatiNati2027", // TODO: confirm or change
-
-  // Ceremony, reception and rooms are all in one place.
+  // Ślub, wesele i noclegi są w jednym miejscu.
   venue: {
     name: "Gościniec Nałęże",
     address: "Grabka 26, 43-384 Jaworze",
@@ -32,28 +35,41 @@ window.SITE = {
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Go%C5%9Bciniec+Na%C5%82%C4%99%C5%BCe%2C+Grabka+26%2C+43-384+Jaworze"
   },
 
-  // Contact for questions. TODO: real numbers.
+  // Kontakt w stopce. TODO: prawdziwe numery.
   contacts: [
     { name: "Natalia", phone: "+48 000 000 000" },
     { name: "Mateusz", phone: "+48 000 000 000" }
   ],
 
-  // Day schedule. "time" is shown as-is; it can be a word instead of an hour.
+  // Plan dnia: "time" wyświetla się dosłownie, może być słowem zamiast godziny.
   schedule: [
-    { time: "14:00",                          pl: ["Ceremonia", "Mówimy sobie „tak”"],                 en: ["Ceremony", "We say “I do”"] },
-    { time: { pl: "ok. 15:00", en: "c. 15:00" }, pl: ["Obiad", "Życzenia, toast i pierwsze danie"],   en: ["Dinner", "Wishes, a toast and the first course"] },
-    { time: { pl: "wieczorem", en: "evening" },  pl: ["Pierwszy taniec", "Otwieramy parkiet"],        en: ["First dance", "The dance floor opens"] },
-    { time: { pl: "do rana", en: "till dawn" },  pl: ["Zabawa", "Tańczymy, dopóki starczy sił"],      en: ["The party", "We dance as long as our legs allow"] }
+    { time: "14:00",    title: "Ceremonia",       text: "Mówimy sobie „tak”. Obrączki przynosi Kola." },
+    { time: "ok. 15:00", title: "Obiad",          text: "Życzenia, toast i pierwsze danie." },
+    { time: "17:00",    title: "Pierwszy taniec", text: "Otwieramy parkiet." },
+    { time: "do 5:00",  title: "Zabawa",          text: "Tańczymy, dopóki starczy sił." }
   ],
 
-  // Our story milestones. "year" is shown as-is; it can be a word.
+  // Nasza historia, chronologicznie. Pusty "year" = na stronie widać "rok do wpisania";
+  // wystarczy wpisać np. "2018", żeby zniknęło.
   milestones: [
-    { year: { pl: "Początek", en: "The start" },
-      pl: ["Poznaliśmy się przez rodziców", "Jedno z rodziców, trochę przy okazji, zabrało jedno z nas do drugiego. Tak się zaczęło."],
-      en: ["We met through our parents", "One of our parents, more or less by chance, brought one of us along to the other. That's how it started."] },
+    { year: "", // TODO: rok poznania
+      title: "Początek",
+      text: "Poznaliśmy się przez rodziców: jedno z nich, trochę przy okazji, zabrało jedno z nas do drugiego. Minęło już dobrych kilka lat, a my dalej nie możemy się sobą nacieszyć." },
+    { year: "", // TODO: rok wspólnego zamieszkania
+      title: "Wspólny dom",
+      text: "Zamieszkaliśmy razem. Od tej pory wszystko robimy na spółkę: zakupy, wakacje i decyzje, kto wstaje pierwszy." },
+    { year: "", // TODO: rok adopcji Koli
+      title: "Kola",
+      text: "Pierwsza w rodzinie na czterech łapach. Czarna, cudna i mega kochana: wita każdego tak, jakby czekała na niego całe życie." },
+    { year: "2025",
+      title: "Zaręczyny na Maderze",
+      text: "6 września, o wschodzie słońca, na szczycie góry. Padło pytanie, padła odpowiedź: tak. Potem było jeszcze trochę łez i bardzo dużo zdjęć." },
+    { year: "2026",
+      title: "Buba",
+      text: "Dołączyła do nas w tym roku. Straszny zbój i cudowna rozrabiaka, ale miłości ma w sobie tyle, że starcza dla wszystkich." },
     { year: "2027",
-      pl: ["Ślub", "W Gościńcu Nałęże, z Wami. Nie moglibyśmy się bardziej cieszyć."],
-      en: ["The wedding", "At Gościniec Nałęże, with you. We couldn't be happier."] }
+      title: "Ślub",
+      text: "W Gościńcu Nałęże, z Wami. Obrączki niesie Kola, a Buba pilnuje, żeby nikt się nie nudził." }
   ]
 };
 
@@ -87,7 +103,8 @@ window.I18N = {
 
     "story.num": "I",
     "story.title": "Nasza historia",
-    "story.lead": "Zaczęło się od rodziców. Resztę dopisaliśmy już sami.",
+    "story.lead": "Trwa już dobrych kilka lat i po drodze urosła do ludzko-futrzanej rodzinki: my dwoje, Kola i Buba.",
+    "story.tbd": "rok do wpisania",
 
     "day.num": "II",
     "day.title": "Plan dnia",
@@ -120,20 +137,25 @@ window.I18N = {
     "info.title": "Dobrze wiedzieć",
     "info.lead": "Odpowiedzi na pytania, które zwykle padają. Jeśli czegoś brakuje, po prostu napiszcie.",
     "info.dress.title": "Dress code",
-    "info.dress.text": "Klimat wesela to boho: lekko, naturalnie i z polotem. Prosimy jedynie o unikanie bieli, czerwieni i czerni (to nie żałoba, to wesele). Kolory ziemi, pastele, len i kwieciste wzory mile widziane.",
+    "info.dress.text": "Klimat wesela to boho: lekko, naturalnie i z polotem. Prosimy o unikanie bieli i czerwieni. Czerń też odpada: wiemy, że ślub to podobno koniec wolności, ale to wciąż wesele, nie pogrzeb, więc żałoby nie zakładamy. Kolory ziemi, pastele, len i kwieciste wzory mile widziane.",
     "info.gifts.title": "Prezenty",
-    "info.gifts.text": "Najważniejsze jest dla nas, że będziecie. Jeśli chcecie nas obdarować, prosimy o pominięcie prezentów rzeczowych: najbardziej ucieszy nas wkład do koperty, który przeznaczymy na wspólny start.",
+    "info.gifts.text": "Najważniejsze jest dla nas, że będziecie. Jeśli chcecie nas obdarować, prosimy o pominięcie prezentów rzeczowych: najbardziej ucieszy nas wkład do koperty, który przeznaczymy na to, co jeszcze przed nami.",
+    "info.dogs.title": "Psy",
+    "info.dogs.text": "Gościniec jest psolubny, więc Kola i Buba będą z nami przez cały dzień, oczywiście w eleganckich ubrankach; Kola niesie obrączki. Jeśli chcecie przyjechać ze swoim psem, napiszcie nam o tym w wiadomości w formularzu, żebyśmy mogli dać znać obsłudze.",
     "info.kids.title": "Dzieci",
     "info.kids.text": "Jeśli na zaproszeniu są dzieci, koniecznie wpiszcie je w formularzu (z menu dziecięcym) i potwierdźcie, że faktycznie przyjadą. Dzięki temu będziemy wiedzieli, ile miejsc i porcji przygotować.",
     "info.photos.title": "Zdjęcia",
-    "info.photos.text": "Róbcie zdjęcia przez cały dzień i noc, ile chcecie. Będą z nami też fotograf i kamerzysta, więc prosimy tylko, żeby nie zasłaniać im kadru, zwłaszcza podczas ceremonii i pierwszego tańca. Oznaczajcie zdjęcia hasztagiem",
+    "info.photos.text": "Róbcie zdjęcia przez cały dzień i noc, ile chcecie. Będą z nami też fotograf i kamerzysta, więc prosimy tylko, żeby nie zasłaniać im kadru, zwłaszcza podczas ceremonii i pierwszego tańca.",
+    "info.photos.soon": "Dzień przed weselem pojawi się tutaj link do wspólnego folderu, do którego wrzucicie swoje zdjęcia i filmy.",
+    "info.photos.open": "Wrzucajcie tu wszystko, co uchwyciliście. Nie trzeba się logować.",
+    "info.photos.btn": "Wrzuć zdjęcia",
     "info.faq.title": "Częste pytania",
     "info.faq.1.q": "Czy mogę przyjść z osobą towarzyszącą?",
     "info.faq.1.a": "Jeśli zaproszenie było adresowane do dwóch osób, jak najbardziej. W razie wątpliwości napiszcie do nas.",
     "info.faq.2.q": "Do kiedy potwierdzić obecność?",
     "info.faq.2.a": "Prosimy o odpowiedź do {deadline}. Wtedy musimy podać liczbę gości i menu.",
     "info.faq.3.q": "Jakie będzie menu?",
-    "info.faq.3.a": "Do wyboru są trzy opcje: mięsna, wegetariańska i dziecięca. Wybierzcie je w formularzu dla każdej osoby i wpiszcie alergie, a kuchnia o nie zadba.",
+    "info.faq.3.a": "Do wyboru są trzy opcje: mięsna, wegetariańska i dziecięca; wybierzcie je w formularzu dla każdej osoby. Do tego bar z mnóstwem drinków, z alkoholem i bez, więc każdy znajdzie coś dla siebie.",
     "info.faq.4.q": "Czy będą poprawiny?",
     "info.faq.4.a": "Dzień po weselu planujemy jeszcze spokojne spotkanie w bardzo wąskim gronie najbliższej rodziny. Osoby, które zapraszamy, dostaną wiadomość od nas osobiście. Pozostałych prosimy, żeby za to zostali z nami na weselu do samego rana!",
 
@@ -151,8 +173,6 @@ window.I18N = {
     "rsvp.menu.meat": "Mięsne",
     "rsvp.menu.veg": "Wegetariańskie",
     "rsvp.menu.kid": "Dziecięce",
-    "rsvp.diet": "Alergie, dieta",
-    "rsvp.diet.ph": "np. bez glutenu, orzechy",
     "rsvp.addGuest": "Dodaj osobę",
     "rsvp.removeGuest": "Usuń",
     "rsvp.contact": "Kontakt",
@@ -165,7 +185,7 @@ window.I18N = {
     "rsvp.song": "Piosenka, przy której na pewno zatańczycie",
     "rsvp.song.ph": "Tytuł i wykonawca",
     "rsvp.message": "Wiadomość dla nas",
-    "rsvp.message.ph": "Wszystko, co chcecie nam przekazać",
+    "rsvp.message.ph": "Wszystko, co chcecie nam przekazać (np. że przyjeżdżacie z psem)",
     "rsvp.submit": "Wyślij odpowiedź",
     "rsvp.sending": "Wysyłanie…",
     "rsvp.success.title": "Dziękujemy!",
@@ -178,135 +198,6 @@ window.I18N = {
 
     "footer.sign": "Z miłością",
     "footer.questions": "Pytania? Dzwońcie lub piszcie.",
-    "footer.made": "Do zobaczenia",
-
-    "lang.switch": "Switch to English",
-    "lang.label": "EN"
-  },
-
-  en: {
-    "meta.title": "Natalia & Mateusz · Wedding",
-    "meta.description": "Natalia and Mateusz are getting married on 2 August 2027 at Gościniec Nałęże in Jaworze, Poland. Everything our guests need to know, and the RSVP.",
-
-    "nav.story": "Our story",
-    "nav.day": "The day",
-    "nav.venue": "Venue",
-    "nav.stay": "Stay",
-    "nav.travel": "Getting there",
-    "nav.info": "Good to know",
-    "nav.rsvp": "RSVP",
-    "nav.menu": "Menu",
-    "nav.close": "Close",
-
-    "hero.eyebrow": "We're getting married",
-    "hero.and": "&",
-    "hero.place": "Gościniec Nałęże · Jaworze, Poland",
-    "hero.scroll": "Scroll",
-    "hero.rsvp": "RSVP",
-
-    "count.days": "days",
-    "count.hours": "hours",
-    "count.minutes": "minutes",
-    "count.seconds": "seconds",
-    "count.today": "It's today!",
-    "count.past": "Thank you for celebrating with us",
-
-    "story.num": "I",
-    "story.title": "Our story",
-    "story.lead": "It began with our parents. The rest we've been writing ourselves.",
-
-    "day.num": "II",
-    "day.title": "The day",
-    "day.lead": "This is how we picture it. Times are approximate, smiles are mandatory.",
-
-    "venue.num": "III",
-    "venue.title": "Venue",
-    "venue.lead": "Ceremony, reception and rooms all in one place: Gościniec Nałęże in Jaworze, at the foot of the Silesian Beskids. No driving between the ceremony and the party.",
-    "venue.kind": "Ceremony & reception",
-    "venue.ceremonyAt": "Ceremony at",
-    "venue.receptionAt": "reception from about",
-    "venue.map": "Open in Maps",
-
-    "stay.num": "IV",
-    "stay.title": "Where to stay",
-    "stay.lead": "The rooms are on site, at the Gościniec. Nothing to search for, nothing to book.",
-    "stay.text": "The rooms are ours to allocate, and we give them to guests travelling from far away. If a room is reserved for you, we'll tell you personally, along with the details. There's nothing to tick in the form; if you're not sure, just write to us.",
-
-    "travel.num": "V",
-    "travel.title": "Getting there",
-    "travel.lead": "The Gościniec is in Jaworze, near Bielsko-Biała in southern Poland. Driving is easiest; for guests from Rybnik we're arranging a minibus.",
-    "travel.bus.title": "Minibus from Rybnik",
-    "travel.bus.text": "For guests from Rybnik and around we're planning a shared minibus there and back. We'll announce the time and the meeting point closer to the date. Tick it in the form if you'll join, so we know what size of bus to book.",
-    "travel.car.title": "Car",
-    "travel.car.text": "The venue has free parking. Set your navigation to <strong>Grabka 26, Jaworze</strong>. Your car can safely stay there until morning.",
-    "travel.public.title": "Public transport",
-    "travel.public.text": "Public transport barely reaches the venue, and not at all at night. If you don't have a car, take the minibus from Rybnik or write to us: we'll help you find a seat in someone's car.",
-
-    "info.num": "VI",
-    "info.title": "Good to know",
-    "info.lead": "Answers to the questions people usually ask. If something's missing, just write to us.",
-    "info.dress.title": "Dress code",
-    "info.dress.text": "The wedding has a boho feel: light, natural and relaxed. We only ask you to avoid white, red and black (it's a wedding, not a funeral). Earthy tones, pastels, linen and florals are very welcome.",
-    "info.gifts.title": "Gifts",
-    "info.gifts.text": "What matters most to us is that you'll be there. If you'd like to give something, please skip physical gifts: a contribution in an envelope, towards our life together, would make us happiest.",
-    "info.kids.title": "Children",
-    "info.kids.text": "If children are named on your invitation, please add them in the form (with the children's menu) and confirm they're really coming. That way we know how many seats and portions to prepare.",
-    "info.photos.title": "Photos",
-    "info.photos.text": "Take photos all day and night, as many as you like. A photographer and a videographer will be with us too, so we only ask you not to block their shot, especially during the ceremony and the first dance. Tag your photos with",
-    "info.faq.title": "FAQ",
-    "info.faq.1.q": "Can I bring a plus one?",
-    "info.faq.1.a": "If your invitation was addressed to two people, absolutely. If in doubt, drop us a line.",
-    "info.faq.2.q": "When should I RSVP by?",
-    "info.faq.2.a": "Please reply by {deadline}. That's when we confirm numbers and menus.",
-    "info.faq.3.q": "What's on the menu?",
-    "info.faq.3.a": "There are three options: meat, vegetarian and children's. Pick one for each guest in the form and list any allergies; the kitchen will take care of it.",
-    "info.faq.4.q": "Is there an after-party?",
-    "info.faq.4.a": "The day after the wedding we're planning a quiet get-together with just our closest family. Those we invite will hear from us personally. Everyone else: please stay and dance with us until dawn instead!",
-
-    "rsvp.num": "VII",
-    "rsvp.title": "RSVP",
-    "rsvp.lead": "Please reply by <strong>{deadline}</strong>. One reply per invitation is enough, even if several of you are coming. Add children as separate guests.",
-    "rsvp.guests": "Guests",
-    "rsvp.guest": "Guest",
-    "rsvp.name": "Full name",
-    "rsvp.name.ph": "e.g. Anna Smith",
-    "rsvp.attending": "Attendance",
-    "rsvp.yes": "I'll be there",
-    "rsvp.no": "Can't make it",
-    "rsvp.menu": "Menu",
-    "rsvp.menu.meat": "Meat",
-    "rsvp.menu.veg": "Vegetarian",
-    "rsvp.menu.kid": "Children's",
-    "rsvp.diet": "Allergies, diet",
-    "rsvp.diet.ph": "e.g. gluten-free, nuts",
-    "rsvp.addGuest": "Add a person",
-    "rsvp.removeGuest": "Remove",
-    "rsvp.contact": "Contact",
-    "rsvp.email": "E-mail",
-    "rsvp.phone": "Phone",
-    "rsvp.logistics": "Getting there",
-    "rsvp.transport": "We'll take the minibus from Rybnik",
-    "rsvp.transport.hint": "There and back. Time and meeting point to be announced closer to the date.",
-    "rsvp.extras": "One more thing",
-    "rsvp.song": "A song that will get you on the dance floor",
-    "rsvp.song.ph": "Title and artist",
-    "rsvp.message": "A message for us",
-    "rsvp.message.ph": "Anything you'd like to tell us",
-    "rsvp.submit": "Send reply",
-    "rsvp.sending": "Sending…",
-    "rsvp.success.title": "Thank you!",
-    "rsvp.success.text": "Your reply has arrived. We can't wait to see you.",
-    "rsvp.success.no": "We'll miss you. Thank you for letting us know.",
-    "rsvp.error": "Something went wrong. Please try again or contact us directly.",
-    "rsvp.notConfigured": "The form isn't connected yet. For now, please RSVP by phone.",
-    "rsvp.required": "This field is required",
-    "rsvp.privacy": "We'll use your details only to organise the wedding and delete them afterwards.",
-
-    "footer.sign": "With love",
-    "footer.questions": "Questions? Call or write to us.",
-    "footer.made": "See you there",
-
-    "lang.switch": "Przełącz na polski",
-    "lang.label": "PL"
+    "footer.made": "Do zobaczenia"
   }
 };

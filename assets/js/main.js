@@ -1,29 +1,21 @@
-/* Behaviour: language switch, rendering content.js, countdown, nav, reveal, RSVP form. */
+/* Behaviour: rendering content.js, countdown, nav, reveal, photo-folder reveal, RSVP form. */
 (function () {
   "use strict";
   var SITE = window.SITE, I18N = window.I18N;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
-  /* ---------- language ---------- */
-  var lang = (function () {
-    var q = new URLSearchParams(location.search).get("lang");
-    var saved = null; try { saved = localStorage.getItem("lang"); } catch (e) {}
-    var l = q || saved || SITE.defaultLang || "pl";
-    return I18N[l] ? l : "pl";
-  })();
-
+  /* ---------- texts ---------- */
   function t(key) {
-    var s = (I18N[lang] && I18N[lang][key]) || (I18N.pl && I18N.pl[key]) || "";
+    var s = (I18N.pl && I18N.pl[key]) || "";
     return s.replace("{deadline}", fmtDate(SITE.rsvpDeadline, { day: "numeric", month: "long", year: "numeric" }));
   }
-  function pick(v) { return (v && typeof v === "object" && !Array.isArray(v)) ? (v[lang] || v.pl || "") : v; }
   function get(path) { return path.split(".").reduce(function (o, k) { return o == null ? o : o[k]; }, SITE); }
   function fmtDate(iso, opts) {
     if (!iso) return "";
     var d = new Date(iso);
     if (isNaN(d)) return iso;
-    return new Intl.DateTimeFormat(lang === "pl" ? "pl-PL" : "en-GB", opts).format(d);
+    return new Intl.DateTimeFormat("pl-PL", opts).format(d);
   }
 
   function applyI18n(root) {
@@ -35,7 +27,7 @@
         var p = pair.split(":"); if (p.length === 2) el.setAttribute(p[0].trim(), t(p[1].trim()));
       });
     });
-    $$("[data-site]", root).forEach(function (el) { el.textContent = pick(get(el.getAttribute("data-site"))) || ""; });
+    $$("[data-site]", root).forEach(function (el) { el.textContent = get(el.getAttribute("data-site")) || ""; });
     $$("[data-site-href]", root).forEach(function (el) { el.setAttribute("href", get(el.getAttribute("data-site-href")) || "#"); });
   }
 
@@ -45,13 +37,12 @@
     $("#footer-date").textContent = fmtDate(SITE.date, { day: "numeric", month: "long", year: "numeric" });
 
     $("#milestones").innerHTML = SITE.milestones.map(function (m) {
-      var x = m[lang] || m.pl;
-      return '<li class="reveal-item"><div class="ms__year">' + esc(pick(m.year)) + '</div><h3>' + esc(x[0]) + '</h3><p>' + esc(x[1]) + '</p></li>';
+      var year = m.year ? esc(m.year) : '<span class="ms__year-tbd">20<i>__</i></span><small>' + esc(t("story.tbd")) + '</small>';
+      return '<li class="reveal-item"><div class="ms__year">' + year + '</div><h3>' + esc(m.title) + '</h3><p>' + esc(m.text) + '</p></li>';
     }).join("");
 
     $("#timeline").innerHTML = SITE.schedule.map(function (s) {
-      var x = s[lang] || s.pl;
-      return '<li class="reveal-item"><div class="tl__time">' + esc(pick(s.time)) + '</div><div class="tl__dot"></div><div><h3>' + esc(x[0]) + '</h3><p>' + esc(x[1]) + '</p></div></li>';
+      return '<li class="reveal-item"><div class="tl__time">' + esc(s.time) + '</div><div class="tl__dot"></div><div><h3>' + esc(s.title) + '</h3><p>' + esc(s.text) + '</p></div></li>';
     }).join("");
 
     $("#contacts").innerHTML = SITE.contacts.map(function (c) {
@@ -61,13 +52,16 @@
   }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
 
-  function setLang(l) {
-    lang = l;
-    try { localStorage.setItem("lang", l); } catch (e) {}
-    document.documentElement.lang = l;
-    renderLists();
-    applyI18n();
-    observeAll();
+  /* ---------- photo folder: hidden until the day before the wedding ---------- */
+  function renderPhotos() {
+    var box = $("#photos"); if (!box) return;
+    var ph = SITE.photos || {};
+    var from = new Date(ph.from || SITE.date).getTime();
+    var forced = new URLSearchParams(location.search).get("photos") === "1"; // preview: ?photos=1
+    var open = !!ph.url && (forced || Date.now() >= from);
+    $("#photos-soon").hidden = open;
+    $("#photos-open").hidden = !open;
+    if (open) $("#photos-link").setAttribute("href", ph.url);
   }
 
   /* ---------- countdown ---------- */
@@ -103,7 +97,6 @@
     }, { rootMargin: "-45% 0px -50% 0px" });
     $$("main section[id]").forEach(function (s) { secObs.observe(s); });
   }
-  $("#lang-toggle").addEventListener("click", function () { setLang(lang === "pl" ? "en" : "pl"); });
 
   /* ---------- reveal ---------- */
   var revObs = ("IntersectionObserver" in window) ? new IntersectionObserver(function (es) {
@@ -160,12 +153,11 @@
     var guests = $$(".guest", list).map(function (g) {
       var attending = ($('input[name="attending"]:checked', g) || {}).value === "yes";
       return { name: $('input[name="name"]', g).value.trim(), attending: attending,
-               menu: attending ? ($('input[name="menu"]:checked', g) || {}).value || "" : "",
-               diet: attending ? $('input[name="diet"]', g).value.trim() : "" };
+               menu: attending ? ($('input[name="menu"]:checked', g) || {}).value || "" : "" };
     });
     var f = form.elements;
     return {
-      lang: lang, submittedAt: new Date().toISOString(), website: f.website.value,
+      submittedAt: new Date().toISOString(), website: f.website.value,
       guests: guests, email: f.email.value.trim(), phone: f.phone.value.trim(),
       transport: f.transport.checked,
       song: f.song.value.trim(), message: f.message.value.trim(),
@@ -196,6 +188,9 @@
   }
 
   /* ---------- go ---------- */
-  setLang(lang);
+  renderLists();
+  applyI18n();
+  renderPhotos();
+  observeAll();
   tick(); setInterval(tick, 1000);
 })();

@@ -128,8 +128,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .nav__links .nav__cta::after { display: none; }
 .nav__links .nav__cta:hover { background: var(--ink); color: var(--ivory); border-color: var(--ink); }
 .nav__right { display: flex; align-items: center; gap: 1rem; }
-.lang { font-size: .74rem; font-weight: 600; letter-spacing: .18em; padding: .45rem .7rem; border: 1px solid var(--line-strong); border-radius: 999px; transition: background .3s, color .3s; }
-.lang:hover { background: var(--ink); color: var(--ivory); }
 .burger { display: none; width: 2.4rem; height: 2.4rem; position: relative; }
 .burger span { position: absolute; left: .5rem; right: .5rem; height: 1px; background: var(--ink); transition: transform .4s var(--ease), top .4s var(--ease); }
 .burger span:first-child { top: calc(50% - 4px); }
@@ -207,6 +205,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .milestones li { position: relative; padding-top: 2rem; border-top: 1px solid var(--line-strong); }
 .milestones li::before { content: ""; position: absolute; top: -3px; left: 0; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
 .milestones .ms__year { font-family: var(--serif); font-size: 3.2rem; line-height: 1; font-weight: 300; color: var(--forest); }
+.milestones .ms__year-tbd { opacity: .45; }
+.milestones .ms__year-tbd i { font-style: normal; letter-spacing: .04em; }
+.milestones .ms__year small { display: block; font-family: var(--sans); font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-2); margin-top: .5rem; opacity: .8; }
 .milestones h3 { font-size: 1.45rem; margin: 1rem 0 .6rem; }
 .milestones p { color: var(--ink-2); }
 
@@ -265,7 +266,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .infogrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 2.5rem 3rem; margin-bottom: clamp(3rem, 6vw, 5rem); }
 .infogrid h3 { font-size: 1.6rem; margin-bottom: .7rem; }
 .infogrid p { color: var(--ink-2); }
-.hashtag { color: var(--forest); font-weight: 500; }
+.photos__soon { font-style: italic; margin-top: .8rem; }
+.photos__open { margin-top: .8rem; display: grid; gap: 1rem; justify-items: start; }
 .faq { max-width: 46rem; }
 .faq__title { font-size: 1.1rem; font-family: var(--sans); letter-spacing: .28em; text-transform: uppercase; font-weight: 500; color: var(--gold); margin-bottom: .6rem; }
 .faq details { border-top: 1px solid var(--line); }
@@ -354,7 +356,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .footer__contacts a { border-bottom: 1px solid rgba(245, 240, 230, .3); transition: border-color .3s; }
 .footer__contacts a:hover { border-color: var(--gold-2); }
 .footer__contacts span { color: var(--gold-2); font-style: italic; margin-right: .5rem; }
-.footer__hash { margin-top: 2.8rem; font-size: .74rem; letter-spacing: .24em; text-transform: uppercase; color: rgba(245, 240, 230, .45); font-weight: 500; }
 
 /* ---------- Motion ---------- */
 .reveal { opacity: 0; transform: translateY(1.4rem); transition: opacity .7s var(--ease), transform .7s var(--ease); }

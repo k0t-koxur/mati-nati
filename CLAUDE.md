@@ -5,7 +5,8 @@ Static HTML + CSS + vanilla JS. No build step, no dependencies, no server.
 **This folder lives outside `~/projects` on purpose** (user decision, 2026-10-07): it must
 never be synced to or run on battlestation. Do not use `bs` here.
 
-- Content and settings: `assets/js/content.js` (PL + EN texts, date, venues, RSVP endpoint).
+- Content and settings: `assets/js/content.js` (Polish texts only since 2026-10-08, date,
+  venue, RSVP endpoint, photo-folder link). No English version: removed on request.
 - Design: `assets/css/style.css`; behaviour: `assets/js/main.js`.
 - Preview: the Code tab preview server (`.claude/launch.json`, `python3 -m http.server`),
   never `file://` in the browser pane.
